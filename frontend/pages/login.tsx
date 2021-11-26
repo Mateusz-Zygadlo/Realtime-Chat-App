@@ -1,20 +1,14 @@
-import NonStandardShape from '../components/NonStandardShape';
-import Register from '../components/Register';
+import type { ReactElement } from 'react';
 import Auth from '../components/Layouts/Auth';
-import type { ReactElement } from 'react'
+import LoginForm from '../components/Forms/LoginForm';
 
 const Login = () => {
   return(
-    <div className="w-screen h-screen flex justify-center items-center indexColor">
-      <NonStandardShape />
-      <div className="bg-black z-10 w-96 border-2 border-black">
-        <Register />
-      </div>
-    </div>
+    <LoginForm />
   )
 } 
 
-Login.getLayout = function getLayout(page: ReactElement) {
+Login.getLayout = function getAuth(page: ReactElement) {
   return (
     <Auth>
       {page}

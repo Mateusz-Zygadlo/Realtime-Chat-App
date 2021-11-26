@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import React, { useState } from 'react';
 
-const Register: NextPage = () => {
+const RegisterForm: NextPage = () => {
   const [submit, setSubmit] = useState<boolean>(false);
   const [user, setUser] = useState({
     nickname: '',
@@ -36,4 +36,4 @@ const Register: NextPage = () => {
   )
 }
 
-export default Register;
+export default RegisterForm;

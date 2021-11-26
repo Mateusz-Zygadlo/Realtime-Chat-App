@@ -3,23 +3,14 @@
 @tailwind utilities;
 
 @layer utilities {
-  .testClass{
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: lightblue;
-  }
-  .indexColor{
-    background-color: #F0F8FF;
-  }
-  .testShape{
+  .ShapeOne{
     position: absolute;
     top: 0;
     left: 0;
     background-color: #efd792;
     clip-path: polygon(50% 0%, 100% 0, 42% 19%, 22% 39%, 0 100%, 0% 60%, 0 0);
   }
-  .testShapeTwo{
+  .ShapeTwo{
     clip-path: polygon(86% 33%, 100% 0, 100% 35%, 100% 100%, 0 100%, 44% 86%, 69% 73%);
     position: absolute;
     bottom: 0;
