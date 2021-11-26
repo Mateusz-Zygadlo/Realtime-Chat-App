@@ -43,7 +43,7 @@ exports.login = [
       if(await bcrypt.compare(password, user.password)){
         const userObj = {
           email: user.email,
-          lastName: user.nickname,
+          nickname: user.nickname,
           id: user._id,
         }
         
@@ -66,3 +66,10 @@ exports.login = [
     }
   }
 ]
+
+exports.logout = (req: Request, res: Response, next: NextFunction) => {
+  return res
+    .status(202)
+    .clearCookie('JWT-TOKEN', {path: '/'})
+    .redirect('http://localhost:3000/')
+}

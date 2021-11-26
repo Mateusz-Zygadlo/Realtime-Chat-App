@@ -16,5 +16,6 @@ router.get('/login', (req: Request, res: Response) => {
     result: 'login page'
   })
 })
+router.get('/logout', userController.logout);
 
 module.exports = router; 
