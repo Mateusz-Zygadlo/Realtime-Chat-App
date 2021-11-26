@@ -4,35 +4,35 @@
 
 @layer utilities {
   .AuthShapeOne{
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #efd792;
     clip-path: polygon(50% 0%, 100% 0, 42% 19%, 22% 39%, 0 100%, 0% 60%, 0 0);
   }
   .AuthShapeTwo{
     clip-path: polygon(86% 33%, 100% 0, 100% 35%, 100% 100%, 0 100%, 44% 86%, 69% 73%);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #efd792;
   }
   .shapeColor{
     background-color: #efd792;
   }
   .indexShapeOne{
     clip-path: polygon(0 0, 100% 0, 27% 29%, 20% 74%, 0 100%, 0% 50%);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #efd792;
   }
   .indexShapeTwo{
     clip-path: polygon(81% 68%, 100% 0, 100% 57%, 100% 100%, 0 100%, 71% 87%);
+  }
+  .failedAuthShapeOne{
+    clip-path: polygon(50% 4%, 100% 0, 38% 23%, 20% 59%, 0 100%, 10% 34%, 0 0);
+  }
+  .failedAuthShapeTwo{
+    clip-path: polygon(70% 59%, 100% 0, 100% 41%, 100% 100%, 0 100%, 31% 89%, 80% 82%);
+  }
+  .shapePositionTop{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .shapePositionBottom{
     position: absolute;
     bottom: 0;
     left: 0;
-    background-color: #efd792;
   }
 }
 
