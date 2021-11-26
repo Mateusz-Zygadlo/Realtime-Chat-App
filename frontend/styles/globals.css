@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .testClass{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: lightblue;
+  }
+  .indexColor{
+    background-color: #F0F8FF;
+  }
+  .testShape{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #efd792;
+    clip-path: polygon(50% 0%, 100% 0, 42% 19%, 22% 39%, 0 100%, 0% 60%, 0 0);
+  }
+  .testShapeTwo{
+    clip-path: polygon(86% 33%, 100% 0, 100% 35%, 100% 100%, 0 100%, 44% 86%, 69% 73%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #efd792;
+  }
+  .shapeColor{
+    background-color: #efd792;
+  }
+}
+
+@layer components {
+  .inputStyle{
+    @apply block w-11/12 h-10 pl-2 mx-auto my-3 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-300;
+  }
+  .buttonStyle{
+    @apply w-7/12 h-12 flex items-center justify-center mx-auto rounded-lg shapeColor font-extrabold text-white text-xl cursor-pointer my-5;
+  }
+}
