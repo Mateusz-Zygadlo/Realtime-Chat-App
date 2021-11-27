@@ -46,7 +46,11 @@ app.use('/auth', authRoutes);
 app.use('/chat', chatRoutes);
 
 io.on("connection", (socket: Socket) => {
-  console.log('connection')
+  socket.on("message", (name: any, message: any, callback: any) => {
+    callback({
+      status: 'ok'
+    })
+  })
 });
 
 httpServer.listen(8000);
