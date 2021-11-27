@@ -1,12 +1,13 @@
 import type { ReactElement } from 'react';
+import Home from '../components/Home/Home';
 import Protected from '../components/Layouts/Protected';
 import Welcome from '../components/Layouts/Welcome';
 
 const home = () => {
   return(
-    <div>
-      Welcome to chat app
-    </div>
+    <>
+      <Home />
+    </>
   )
 } 
 

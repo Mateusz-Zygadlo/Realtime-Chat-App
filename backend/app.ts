@@ -1,11 +1,14 @@
-const express = require('express');
+import express from "express";
+import { createServer } from "http";
+import { Server, Socket } from "socket.io";
+
 const cors = require('cors');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
 require('dotenv').config();
 
-const post = process.env.POST || 8000;
+const port = process.env.POST || 8000;
 
 const mongoDb = process.env.MONGO_URL;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
@@ -14,14 +17,21 @@ db.on("error", console.error.bind(console, "mongo connection error"));
 
 const indexRoutes = require('./routes/index');
 const authRoutes = require('./routes/auth');
+const chatRoutes = require('./routes/chat');
 
 const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+  }
+});
 
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded());
-app.use('/', indexRoutes);
-app.use('/auth', authRoutes);
 
 app.use(
   cors({
@@ -31,4 +41,12 @@ app.use(
   })
 );
 
-app.listen(post, () => console.log('api works'))
+app.use('/', indexRoutes);
+app.use('/auth', authRoutes);
+app.use('/chat', chatRoutes);
+
+io.on("connection", (socket: Socket) => {
+  console.log('connection')
+});
+
+httpServer.listen(8000);
