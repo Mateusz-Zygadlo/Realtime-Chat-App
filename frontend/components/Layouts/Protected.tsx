@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import { useRouter } from "next/router";
 import jwt_decode from "jwt-decode";
 
-const Auth: NextPage = ({ children }) => { 
+const Protected: NextPage = ({ children }) => { 
   const Router = useRouter();
   
   let userToken: any;
@@ -37,4 +37,4 @@ const Auth: NextPage = ({ children }) => {
   )
 }
 
-export default Auth;
+export default Protected;

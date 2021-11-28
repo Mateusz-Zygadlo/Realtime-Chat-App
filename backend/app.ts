@@ -45,12 +45,19 @@ app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
 app.use('/chat', chatRoutes);
 
+const chat: any = [];
+
 io.on("connection", (socket: Socket) => {
-  socket.on("message", (name: any, message: any, callback: any) => {
-    callback({
-      status: 'ok'
-    })
+  socket.on("message", (name: any, message: any) => {
+    chat.push({name, message});
+    
+    io.sockets.emit('serverMessage', chat);
+
+    console.log(chat);
+  })
+  socket.on('connectUser', (obj: any) => {
+    console.log(obj.connect)
   })
 });
 
-httpServer.listen(8000);
+httpServer.listen(port);
