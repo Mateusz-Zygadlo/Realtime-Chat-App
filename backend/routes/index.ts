@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req: Request, res: Response) => {
   return res.json({
-    success: 'api works'
+    success: 'api works ["/"]'
   })
 })
 
