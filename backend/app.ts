@@ -1,10 +1,12 @@
 import express from "express";
 import { createServer } from "http";
 import { Server, Socket } from "socket.io";
+import cors from 'cors';
+import indexRoutes from './routes/index';
+import authRoutes from './routes/auth';
 
-const cors = require('cors');
-const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
 
 require('dotenv').config();
 
@@ -14,9 +16,6 @@ const mongoDb = process.env.MONGO_URL;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
-
-const indexRoutes = require('./routes/index');
-const authRoutes = require('./routes/auth');
 
 const app = express();
 const httpServer = createServer(app);

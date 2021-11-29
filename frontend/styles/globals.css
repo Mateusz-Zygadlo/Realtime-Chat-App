@@ -29,6 +29,12 @@
     top: 0;
     left: 0;
   }
+  .chatShapeOne{
+    clip-path: polygon(20% 10%, 75% 0%, 100% 0, 45% 38%, 0 100%, 0% 50%);
+  }
+  .chatShapeTwo{
+    clip-path: polygon(62% 75%, 77% 49%, 100% 0, 100% 100%, 34% 100%, 0 100%);
+  }
   .shapePositionBottom{
     position: absolute;
     bottom: 0;

@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import Home from '../components/Home/Home';
 import Protected from '../components/Layouts/Protected';
-import Welcome from '../components/Layouts/Welcome';
+import Chat from '../components/Layouts/Chat';
 
 const home = () => {
   return(
@@ -14,7 +14,7 @@ const home = () => {
 home.getLayout = function getAuth(page: ReactElement) {
   return (
     <Protected>
-      <Welcome>{page}</Welcome>
+      <Chat>{page}</Chat>
     </Protected>
   )
 }

@@ -18,4 +18,4 @@ router.get('/login', (req: Request, res: Response) => {
 })
 router.get('/logout', userController.logout);
 
-module.exports = router; 
+export default router; 
