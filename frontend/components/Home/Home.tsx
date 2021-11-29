@@ -14,15 +14,6 @@ const decodeUser = () => {
 }
 
 const socket = io("http://localhost:8000");
-
-socket.on("connect", () => {
-  socket.emit('connectUser', {connect: true})
-});
-
-socket.on("disconnect", () => {
-  socket.emit('connectUser', {connect: false})
-});
-
 const Home = () => {
   const [userName, setUser] = useState<any>(null);
   
@@ -51,7 +42,6 @@ const Home = () => {
 
   useEffect(() => {
     socket.on('serverMessage', (data: any) => {
-      console.log(data);
       setChat(data);
     })
   }, [socket])
@@ -59,39 +49,32 @@ const Home = () => {
   useEffect((): any => {
     if (typeof document !== 'undefined') {
       userToken = document.cookie.split(' ')[0].split('=')[1];
-
-      if(!userToken){
-        return;
-      }
-
-      let user = decodeUser();
-  
-      if(!user){
-        return;
-      }
       
+      let user = decodeUser();
+    
       setUser(user);
     }
+    socket.emit('chat');
   }, [])
 
   return(
     <>
-      <h1 className="text-3xl flex justify-center my-5 font-extrabold text-white">Hello chat page</h1>
-      <div className="h-64 bg-white pl-5 mx-5 overflow-scroll flex flex-col pt-5">
+      <h1 className="text-3xl flex justify-center my-5 font-extrabold text-white">Chat page</h1>
+      <div className="h-64 bg-white pl-5 mx-5 overflow-y-scroll overflow-x-hidden flex flex-col py-5">
         {chat ?
           <div>
             {chat.map(({name, message}: any, index: number) => (
               <>
                 {name == userName.nickname ? 
-                  <div className="flex justify-end mr-4" key={index}>
-                    <div className="flex bg-blue-300 px-2 py-1 rounded-full">
+                  <div className="flex justify-end my-1" key={index}>
+                    <div className="flex bg-blue-300 px-2 py-1 rounded-full mr-4">
                       {/* <h2 className="mr-2">{name}: </h2> */}
                       <h1>{message}</h1>
                     </div>
                   </div>
                 : 
-                  <div className="flex" key={index}>
-                    <div className="flex bg-gray-200 px-2 py-1 rounded-full">
+                  <div className="flex my-1" key={index}>
+                    <div className="flex bg-gray-200 px-2 py-1 rounded-full mr-4">
                       {/* <h2>{name}: </h2> */}
                       <h1>{message}</h1>
                     </div>

@@ -17,7 +17,6 @@ db.on("error", console.error.bind(console, "mongo connection error"));
 
 const indexRoutes = require('./routes/index');
 const authRoutes = require('./routes/auth');
-const chatRoutes = require('./routes/chat');
 
 const app = express();
 const httpServer = createServer(app);
@@ -43,21 +42,17 @@ app.use(
 
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
-app.use('/chat', chatRoutes);
 
 const chat: any = [];
 
 io.on("connection", (socket: Socket) => {
   socket.on("message", (name: any, message: any) => {
     chat.push({name, message});
-    
     io.sockets.emit('serverMessage', chat);
-
-    console.log(chat);
   })
-  socket.on('connectUser', (obj: any) => {
-    console.log(obj.connect)
-  })
+  socket.on('chat', () => {
+    io.sockets.emit('serverMessage', chat);
+  });
 });
 
 httpServer.listen(port);
